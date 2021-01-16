@@ -12,7 +12,6 @@ export class UserDetailComponent implements OnInit {
   user: IUserEntity; // zde je saved právě editovaný uživatel
   username = '';
 
-
   constructor(
     private readonly  activatedRoute: ActivatedRoute,
     private readonly  usersService: UsersService,
@@ -42,10 +41,10 @@ export class UserDetailComponent implements OnInit {
 
   edit() {
     this.usersService.edit(this.user.id, this.username)
-      .subscribe((u: IUserEntity)=>{
+      .subscribe((u: IUserEntity) => {
         this.user = u;
         this.username = u.username;
-      })
+      });
 
 
   }

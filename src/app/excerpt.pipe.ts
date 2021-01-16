@@ -5,16 +5,13 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class ExcerptPipe implements PipeTransform {
 
-  transform(value: string): string {
+  transform(value: string, limit: number, dotsRemainder: string): string {
 
-     const remainder = "...";
+     const valWithRem = value.length + dotsRemainder.length;
 
-    if(value.length > 3)
-    return value.substring(0,3) + remainder;
+     if (value.length < limit) { return value; }
+      else if (dotsRemainder.length >= limit) { return dotsRemainder.substring(0, limit); }
+      else if (valWithRem > limit) {return value.substring(0, limit - dotsRemainder.length) + dotsRemainder; }
+ }
+     }
 
-      else return value;
-
-
-  }
-
-}
